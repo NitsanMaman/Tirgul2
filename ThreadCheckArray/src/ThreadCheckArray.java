@@ -34,12 +34,6 @@ public class ThreadCheckArray implements Runnable
 				synchronized (sd) 
 				{
 					sd.setFlag(true);
-					/**
-                     * @author Ron
-                     * Added the following lines for the winner thread
-                     */
-                    if (b!=0)
-                        System.out.println(Thread.currentThread().getName() + " win");
 				}			
 			}
 			if (b == array.get(n-1))
@@ -80,7 +74,7 @@ public class ThreadCheckArray implements Runnable
                      * @author Ron
                      * Added the following lines for the winner thread
                      */
-                    if (sd.getFlag() && b!=0)
+                    if (sd.getFlag())
                         System.out.println(Thread.currentThread().getName() + " win");
 					sd.setFlag(true);
 					
@@ -93,6 +87,12 @@ public class ThreadCheckArray implements Runnable
 			synchronized (sd) 
 			{
 				sd.setWinArray(winArray);
+				/**
+                 * @author Ron
+                 * Added the following lines for the winner thread
+                 */
+				if (array.size() != 1)
+					System.out.println(Thread.currentThread().getName() + " win");
 			}	
 		}
         /**
