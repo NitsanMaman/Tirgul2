@@ -51,6 +51,11 @@ public class ThreadCheckArray implements Runnable
 	}
 
 	public void run() {
+        /**
+         * @author NitMa
+         * Added the following line for save start running time for thread
+         */
+        long startTimeMillis = System.nanoTime();
 		if (array.length != 1)
 			if (Thread.currentThread().getName().equals("thread1"))
 				rec(array.length-1, b - array[array.length - 1]);
@@ -75,5 +80,11 @@ public class ThreadCheckArray implements Runnable
 				sd.setWinArray(winArray);
 			}	
 		}
+        /**
+         * @author NitMa
+         * Added the following line for printing running time of thread
+         */
+        System.out.println(Thread.currentThread().getName() + " runs for " +
+                (System.nanoTime() - startTimeMillis) + " nano sec");
 	}
 }
